@@ -108,7 +108,7 @@ func (r assetRepository) Find(c context.Context, pageIndex, pageSize int, name, 
 	case "lastAccessTime":
 		field = "last_access_time"
 	default:
-		field = "created"
+		field = "last_access_time"
 	}
 
 	err = db.Order("assets." + field + " " + order).Offset((pageIndex - 1) * pageSize).Limit(pageSize).Find(&o).Error
